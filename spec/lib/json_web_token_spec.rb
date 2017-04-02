@@ -21,7 +21,8 @@ RSpec.describe JsonWebToken do
 
     it 'should call JWT.decode method' do
       expect(JWT).to receive(:decode).with(token, Rails.application.secrets.secret_key_base).and_call_original
-      subject.decode(token)
+      decoded = subject.decode(token)
+      expect(decoded[:user_id]).to eq(1)
     end
 
     it 'should return nil if token is invalid' do
