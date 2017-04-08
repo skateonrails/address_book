@@ -4,6 +4,7 @@ class ContactsController < ApplicationController
   end
 
   def show
+    render json: contact
   end
 
   def create
@@ -25,5 +26,11 @@ class ContactsController < ApplicationController
     return @contacts if @contacts.present?
     command = Firebase::GetContacts.call(organization)
     @contacts = command.result
+  end
+
+  def contact
+    return @contact if @contact.present?
+    command = Firebase::GetContact.call(organization, params[:id])
+    @contact = command.result
   end
 end

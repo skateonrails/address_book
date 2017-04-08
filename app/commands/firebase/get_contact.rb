@@ -11,7 +11,8 @@ module Firebase
       return errors.add "Response raw body: #{response_raw_body}" unless response.success?
       return nil if response_body.blank?
 
-      Contact.new(response_body)
+      attributes = {id: contact_id}.merge response_body
+      Contact.new(attributes)
     end
 
     private

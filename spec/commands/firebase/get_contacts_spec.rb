@@ -9,6 +9,7 @@ RSpec.describe 'Firebase::GetContacts', :vcr do
     it 'should get contacts from organization' do
       expect(command.success?).to be true
       expect(command.result.first).is_a?(Contact)
+      expect(command.result.first.id).to eq('-Kh-cQRNupsqgLBbRdJX')
     end
   end
 

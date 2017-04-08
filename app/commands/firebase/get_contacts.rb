@@ -10,7 +10,7 @@ module Firebase
       return errors.add "Response raw body: #{response_raw_body}" unless response.success?
       return [] if response_body.blank?
 
-      response_body.map{|key, hash_data| Contact.new(hash_data)}
+      response_body.map{|key, hash_data| Contact.new({id: key}.merge(hash_data))}
     end
 
     private
