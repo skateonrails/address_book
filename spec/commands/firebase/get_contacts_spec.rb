@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe Firebase::Get, :vcr do
-  subject { Firebase::Get }
+RSpec.describe 'Firebase::GetContacts', :vcr do
+  subject { Firebase::GetContacts }
   let(:organization) { create(:organization) }
   let(:command) { subject.call(organization) }
 

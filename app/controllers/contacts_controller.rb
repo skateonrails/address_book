@@ -23,7 +23,7 @@ class ContactsController < ApplicationController
 
   def contacts
     return @contacts if @contacts.present?
-    command = Firebase::Get.call(organization)
+    command = Firebase::GetContacts.call(organization)
     @contacts = command.result
   end
 end

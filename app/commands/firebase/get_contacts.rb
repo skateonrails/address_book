@@ -1,5 +1,5 @@
 module Firebase
-  class Get
+  class GetContacts
     prepend SimpleCommand
 
     def initialize(organization)

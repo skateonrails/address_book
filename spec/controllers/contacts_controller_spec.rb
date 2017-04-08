@@ -5,7 +5,7 @@ RSpec.describe ContactsController, type: :controller do
 
   describe "GET #index" do
     it "returns http success" do
-      VCR.use_cassette("Firebase_Get/with_valid_organization/should_get_contacts_from_organization") do
+      VCR.use_cassette("Firebase_GetContacts/with_valid_organization/should_get_contacts_from_organization") do
         get :index, params: {organization_id: organization.id}
         expect(response).to have_http_status(:success)
       end
