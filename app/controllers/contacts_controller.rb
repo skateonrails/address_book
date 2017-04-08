@@ -1,5 +1,6 @@
 class ContactsController < ApplicationController
   def index
+    render json: contacts
   end
 
   def show
@@ -12,5 +13,17 @@ class ContactsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+
+  def organization
+    @organization ||= Organization.find(params[:organization_id])
+  end
+
+  def contacts
+    return @contacts if @contacts.present?
+    command = Firebase::Get.call(organization)
+    @contacts = command.result
   end
 end
