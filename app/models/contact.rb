@@ -2,9 +2,11 @@ class Contact
   include ActiveModel::Model
   include ActiveModel::Serialization
   include ActiveModel::Serializers::JSON
+  include ActiveModel::Conversion
 
   # :reek:Attribute
-  attr_accessor :name,
+  attr_accessor :id,
+                :name,
                 :city,
                 :state,
                 :country,
@@ -13,7 +15,7 @@ class Contact
                 :building_number,
                 :zip_code
 
-  validates :name, :zip_code, :street_address, :building_number, presence: true
+  validates :id, :name, :zip_code, :street_address, :building_number, presence: true
   validates :city, :state, :country, presence: true
   validates :building_number, numericality: { only_integer: true }
 
@@ -34,5 +36,9 @@ class Contact
       building_number: nil,
       zip_code: nil
     }
+  end
+
+  def persisted?
+    id.present?
   end
 end

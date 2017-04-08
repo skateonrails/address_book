@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :contact do
+    id { '-Kh-cQRNupsqgLBbRdJX' }
     name { Faker::GameOfThrones.character }
     city { Faker::Address.city }
     state { Faker::Address.state }
