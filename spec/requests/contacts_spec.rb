@@ -2,7 +2,7 @@ require 'rails_helper'
 
 
 RSpec.describe 'Contacts', type: :request do
-  let(:organization) { create(:organization) }
+  let(:organization) { create(:organization_for_vcr) }
 
   describe "GET /organizations/1/contacts" do
     before :each do

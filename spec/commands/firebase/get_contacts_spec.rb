@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Firebase::GetContacts', :vcr do
   subject { Firebase::GetContacts }
-  let(:organization) { create(:organization) }
+  let(:organization) { create(:organization_for_vcr) }
   let(:command) { subject.call(organization) }
 
   context 'with valid organization' do

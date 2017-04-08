@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ContactsController, type: :controller do
-  let(:organization) { create(:organization) }
+  let(:organization) { create(:organization_for_vcr) }
 
   describe "GET #index" do
     it "returns http success" do
