@@ -69,10 +69,10 @@ PreCommit:
     enabled: true
     exclude:
       - '**/db/structure.sql' # Ignore trailing whitespace in generated files
-      - 'spec/vcr/**/*'
       - '**/*.svg'
       - 'doc/api/index.html'
       - 'README.md'
+      - 'spec/cassettes/**/*'
 
   YamlSyntax:
     enabled: true

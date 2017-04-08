@@ -46,6 +46,8 @@ group :test do
   gem 'faker'
   gem 'database_cleaner'
   gem 'timecop'
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :development do
