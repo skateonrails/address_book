@@ -9,7 +9,7 @@ module Firebase
 
     def call
       set_errors_from_object unless contact.valid?
-      return nil if response_body.blank? || errors.present?
+      return nil if errors.present? || response_body.blank?
       errors.add "Response raw body: #{response_raw_body}" unless response.success?
 
       contact.id = response_body['name']

@@ -1,6 +1,5 @@
 FactoryGirl.define do
   factory :contact do
-    id { '-Kh-cQRNupsqgLBbRdJX' }
     name { Faker::GameOfThrones.character }
     city { Faker::Address.city }
     state { Faker::Address.state }
@@ -9,5 +8,9 @@ FactoryGirl.define do
     secondary_address { Faker::Address.secondary_address }
     building_number { Faker::Address.building_number }
     zip_code { Faker::Address.zip_code }
+
+    factory :contact_with_id do
+      id { '-Kh-cQRNupsqgLBbRdJX' }
+    end
   end
 end

@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Contact, type: :model do
-  subject { FactoryGirl.build(:contact) }
+  subject { build(:contact) }
+  let(:created_contact) { build(:contact_with_id) }
 
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:city) }
@@ -14,7 +15,8 @@ RSpec.describe Contact, type: :model do
   it { should respond_to(:secondary_address) }
 
   it { should be_valid }
-  it { expect(subject.persisted?).to be true }
+  it { expect(subject.persisted?).to be false }
+  it { expect(created_contact.persisted?).to be true }
 
   it { expect(subject.model_name.name.downcase).to eq('contact') }
 
