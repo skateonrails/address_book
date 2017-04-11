@@ -15,7 +15,7 @@ class Contact
                 :building_number,
                 :zip_code
 
-  validates :id, :name, :zip_code, :street_address, :building_number, presence: true
+  validates :name, :zip_code, :street_address, :building_number, presence: true
   validates :city, :state, :country, presence: true
   validates :building_number, numericality: { only_integer: true }
 

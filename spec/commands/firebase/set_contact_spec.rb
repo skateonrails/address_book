@@ -13,4 +13,12 @@ RSpec.describe 'Firebase::SetContact', :vcr do
       expect(command.result.valid?).to be true
     end
   end
+
+  context 'with invalid params' do
+    let(:params) { {} }
+    it 'should not create contact' do
+      expect(command.success?).to be false
+      expect(command.result).to be nil
+    end
+  end
 end

@@ -8,11 +8,12 @@ module Firebase
     end
 
     def call
-      return errors.add "Response raw body: #{response_raw_body}" unless response.success?
-      return nil if response_body.blank?
+      set_errors_from_object unless contact.valid?
+      return nil if response_body.blank? || errors.present?
+      errors.add "Response raw body: #{response_raw_body}" unless response.success?
 
-      attributes = {id: response_body['name']}.merge params
-      Contact.new(attributes)
+      contact.id = response_body['name']
+      return contact
     end
 
     private
@@ -33,6 +34,16 @@ module Firebase
 
     def response_raw_body
       response.raw_body
+    end
+
+    def contact
+      @contact ||= Contact.new(params)
+    end
+
+    def set_errors_from_object
+      contact.errors.messages.each do |key, value|
+        errors.add(key, value.first)
+      end
     end
 
     def path

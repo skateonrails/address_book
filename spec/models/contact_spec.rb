@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe Contact, type: :model do
   subject { FactoryGirl.build(:contact) }
 
-  it { should validate_presence_of(:id) }
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:city) }
   it { should validate_presence_of(:state) }
