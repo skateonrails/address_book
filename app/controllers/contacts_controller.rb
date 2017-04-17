@@ -8,6 +8,13 @@ class ContactsController < ApplicationController
   end
 
   def create
+    command = Firebase::SetContact.call(organization, contact_params)
+    if command.success?
+      contact = command.result
+      render json: contact, status: :created, location: [organization, contact]
+    else
+      render json: command.errors, status: :unprocessable_entity
+    end
   end
 
   def update
@@ -33,4 +40,11 @@ class ContactsController < ApplicationController
     command = Firebase::GetContact.call(organization, params[:id])
     @contact = command.result
   end
+
+  def contact_params
+    params.require(:contact).permit(:name, :city, :state, :country,
+                                    :street_address, :secondary_address,
+                                    :building_number, :zip_code)
+  end
+
 end

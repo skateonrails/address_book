@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://ab-contacts-development.firebaseio.com/organization/1/contacts.json?auth=GmVHiIGJ2llYrdA8S46mVnxyHmrVzhNH94Sc4fe7
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.3.3 (2016-11-21))
+      Accept:
+      - "*/*"
+      Date:
+      - Sat, 08 Apr 2017 23:10:03 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sat, 08 Apr 2017 23:10:04 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '31'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31556926; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"name":"-KhEpDKTe15u89OONCEJ"}'
+    http_version: 
+  recorded_at: Sat, 08 Apr 2017 23:10:04 GMT
+recorded_with: VCR 3.0.3
