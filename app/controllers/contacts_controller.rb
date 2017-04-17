@@ -13,7 +13,7 @@ class ContactsController < ApplicationController
       contact = command.result
       render json: contact, status: :created, location: [organization, contact]
     else
-      render json: command.errors, status: :unprocessable_entity
+      render json: { error: command.errors }, status: :unprocessable_entity
     end
   end
 

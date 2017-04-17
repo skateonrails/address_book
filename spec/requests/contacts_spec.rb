@@ -38,4 +38,41 @@ RSpec.describe 'Contacts', type: :request do
       expect(struct_response.name).to eq('Contact Name')
     end
   end
+
+  describe 'POST /contacts' do
+    context 'when the request is valid' do
+      let(:attributes) { attributes_for(:contact) }
+
+      before :each do
+        VCR.use_cassette("Firebase_SetContact/with_valid_params/should_create_contact") do
+          post organization_contacts_path(organization), params: { contact: attributes }
+        end
+      end
+
+      it { expect(response).to have_http_status(201) }
+
+      it 'creates a contact' do
+        expect(struct_response.name).to eq(attributes[:name])
+      end
+    end
+
+    context 'when the request is invalid' do
+      let(:invalid_attributes) { {name: '', city: '', state: '',
+                                  country: '', street_address: '',
+                                  building_number: '', zip_code: ''} }
+
+      before :each do
+        VCR.use_cassette("Firebase_SetContact/with_invalid_params/should_not_create_contact") do
+          post organization_contacts_path(organization), params: { contact: invalid_attributes }
+        end
+      end
+
+      it { expect(response).to have_http_status(422) }
+
+      it 'returns a validation failure message' do
+        expect(struct_response.error['name'].first).to match(/can't be blank/)
+      end
+    end
+  end
+
 end
