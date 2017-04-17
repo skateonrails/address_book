@@ -7,9 +7,23 @@ RSpec.describe ContactsController, type: :controller do
     { contact: attributes_for(:contact), organization_id: organization.id }
   }
 
+  let(:valid_update_attributes) {
+    { id: attributes_for(:contact_with_id)[:id], contact: attributes_for(:contact), organization_id: organization.id }
+  }
+
   let(:invalid_attributes) {
-    { contact: {name: '', city: '', state: '', country: '', street_address: '', building_number: '', zip_code: ''},
-      organization_id: organization.id }
+    {
+      organization_id: organization.id,
+      contact: {name: '', city: '', state: '', country: '', street_address: '', building_number: '', zip_code: ''}
+    }
+  }
+
+  let(:invalid_update_attributes) {
+    {
+      id: attributes_for(:contact_with_id)[:id],
+      organization_id: organization.id,
+      contact: {name: '', city: '', state: '', country: '', street_address: '', building_number: '', zip_code: ''}
+    }
   }
 
   let(:valid_session) { {} }
@@ -55,10 +69,26 @@ RSpec.describe ContactsController, type: :controller do
     end
   end
 
-  describe "GET #update" do
-    it "returns http success" do
-      put :update, params: {organization_id: organization.id, id: 1}
-      expect(response).to have_http_status(:success)
+  describe "PUT #update" do
+    context 'with valid params' do
+      it 'updates the requested contact' do
+        VCR.use_cassette("Firebase_UpdateContact/with_valid_params/should_update_contact") do
+          put :update, params: valid_update_attributes, session: valid_session
+          expect(response).to have_http_status(:ok)
+          expect(response.content_type).to eq('application/json')
+          expect(response.body).to match(valid_update_attributes[:contact].to_json)
+        end
+      end
+    end
+
+    context 'with invalid params' do
+      it 'does not updates the requested contact' do
+        VCR.use_cassette("Firebase_UpdateContact/with_invalid_params/should_not_update_contact") do
+          put :update, params: invalid_update_attributes, session: valid_session
+          expect(response).to have_http_status(:unprocessable_entity)
+          expect(response.content_type).to eq('application/json')
+        end
+      end
     end
   end
 

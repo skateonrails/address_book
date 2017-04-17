@@ -18,6 +18,13 @@ class ContactsController < ApplicationController
   end
 
   def update
+    command = Firebase::UpdateContact.call(organization, contact.id, contact_params)
+    if command.success?
+      contact = command.result
+      render json: contact
+    else
+      render json: { error: command.errors }, status: :unprocessable_entity
+    end
   end
 
   def destroy
