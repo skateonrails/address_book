@@ -62,9 +62,7 @@ RSpec.describe 'Contacts', type: :request do
                                   building_number: '', zip_code: ''} }
 
       before :each do
-        VCR.use_cassette("Firebase_SetContact/with_invalid_params/should_not_create_contact") do
-          post organization_contacts_path(organization), params: { contact: invalid_attributes }
-        end
+        post organization_contacts_path(organization), params: { contact: invalid_attributes }
       end
 
       it { expect(response).to have_http_status(422) }

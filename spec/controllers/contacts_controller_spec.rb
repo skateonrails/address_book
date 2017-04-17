@@ -48,11 +48,9 @@ RSpec.describe ContactsController, type: :controller do
 
     context 'with invalid params' do
       it 'renders a JSON response with errors for the new organization' do
-        VCR.use_cassette("Firebase_SetContact/with_invalid_params/should_not_create_contact") do
-          post :create, params: invalid_attributes, session: valid_session
-          expect(response).to have_http_status(:unprocessable_entity)
-          expect(response.content_type).to eq('application/json')
-        end
+        post :create, params: invalid_attributes, session: valid_session
+        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response.content_type).to eq('application/json')
       end
     end
   end
