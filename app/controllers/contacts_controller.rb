@@ -1,4 +1,4 @@
-class ContactsController < ApplicationController
+class ContactsController < TokenAuthenticatableController
   def index
     render json: contacts
   end
@@ -39,7 +39,7 @@ class ContactsController < ApplicationController
   private
 
   def organization
-    @organization ||= Organization.find(params[:organization_id])
+    @organization ||= current_user.organizations.find(params[:organization_id])
   end
 
   def contacts

@@ -2,13 +2,19 @@ require 'rails_helper'
 
 
 RSpec.describe 'Contacts', type: :request do
+  let(:current_user) { create(:user) }
   let(:organization) { create(:organization_for_vcr) }
   let(:contact_id) { attributes_for(:contact_with_id)[:id] }
+
+  before :each do
+    current_user.organizations << organization
+    current_user.save
+  end
 
   describe "GET /organizations/:organization_id/contacts" do
     before :each do
       VCR.use_cassette("Firebase_GetContacts/with_valid_organization/should_get_contacts_from_organization", match_requests_on: [:method, :host]) do
-        get organization_contacts_path(organization)
+        get organization_contacts_path(organization), headers: login_user_headers(current_user)
       end
     end
 
@@ -25,7 +31,7 @@ RSpec.describe 'Contacts', type: :request do
   describe "GET /organizations/:organization_id/contacts/:id" do
     before :each do
       VCR.use_cassette("Firebase_GetContact/with_valid_organization/should_get_contacts_from_organization", match_requests_on: [:method, :host]) do
-        get organization_contact_path(organization, contact_id)
+        get organization_contact_path(organization, contact_id), headers: login_user_headers(current_user)
       end
     end
 
@@ -44,7 +50,7 @@ RSpec.describe 'Contacts', type: :request do
 
       before :each do
         VCR.use_cassette("Firebase_SetContact/with_valid_params/should_create_contact") do
-          post organization_contacts_path(organization), params: { contact: attributes }
+          post organization_contacts_path(organization), params: { contact: attributes }, headers: login_user_headers(current_user)
         end
       end
 
@@ -61,7 +67,7 @@ RSpec.describe 'Contacts', type: :request do
                                   building_number: '', zip_code: ''} }
 
       before :each do
-        post organization_contacts_path(organization), params: { contact: invalid_attributes }
+        post organization_contacts_path(organization), params: { contact: invalid_attributes }, headers: login_user_headers(current_user)
       end
 
       it { expect(response).to have_http_status(422) }
@@ -78,7 +84,7 @@ RSpec.describe 'Contacts', type: :request do
 
       before :each do
         VCR.use_cassette("Firebase_UpdateContact/with_valid_params/should_update_contact") do
-          put organization_contact_path(organization, contact_id), params: { contact: attributes }
+          put organization_contact_path(organization, contact_id), params: { contact: attributes }, headers: login_user_headers(current_user)
         end
       end
 
@@ -96,7 +102,7 @@ RSpec.describe 'Contacts', type: :request do
 
       before :each do
         VCR.use_cassette("Firebase_UpdateContact/with_invalid_params/should_not_update_contact") do
-          put organization_contact_path(organization, contact_id), params: { contact: invalid_attributes }
+          put organization_contact_path(organization, contact_id), params: { contact: invalid_attributes }, headers: login_user_headers(current_user)
         end
       end
 
@@ -112,7 +118,7 @@ RSpec.describe 'Contacts', type: :request do
     context 'when the request is valid' do
       before :each do
         VCR.use_cassette("Firebase_DeleteContact/with_valid_id/should_delete_contact") do
-          delete organization_contact_path(organization, contact_id)
+          delete organization_contact_path(organization, contact_id), headers: login_user_headers(current_user)
         end
       end
 

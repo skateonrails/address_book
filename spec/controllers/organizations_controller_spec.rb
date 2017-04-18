@@ -1,6 +1,6 @@
 require 'rails_helper'
 RSpec.describe OrganizationsController, type: :controller do
-
+  let(:current_user) { create(:admin_user) }
   # This should return the minimal set of attributes required to create a valid
   # Organization. As you add validations to Organization, be sure to
   # adjust the attributes here as well.
@@ -16,6 +16,10 @@ RSpec.describe OrganizationsController, type: :controller do
   # in order to pass any filters (e.g. authentication) defined in
   # OrganizationsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
+
+  before :each do
+    controller_login_user(current_user)
+  end
 
   describe 'GET #index' do
     it 'returns a success response' do

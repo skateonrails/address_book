@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Organizations', type: :request do
+  let(:current_user) { create(:admin_user) }
   let(:organization) { create(:organization) }
   let(:attributes) { { name: Faker::Company.name } }
   let(:not_found_params) { { id: Organization.count + 100 } }
@@ -8,7 +9,7 @@ RSpec.describe 'Organizations', type: :request do
   describe 'GET /organizations' do
     before :each do
       organization
-      get organizations_path
+      get organizations_path, headers: login_user_headers(current_user)
     end
 
     it { expect(response).to have_http_status(200) }
@@ -22,7 +23,7 @@ RSpec.describe 'Organizations', type: :request do
   describe 'GET /organizations/:id' do
     context 'when record exists' do
       before :each do
-        get organization_path(organization)
+        get organization_path(organization), headers: login_user_headers(current_user)
       end
 
       it { expect(response).to have_http_status(200) }
@@ -34,7 +35,7 @@ RSpec.describe 'Organizations', type: :request do
 
     context 'when record does not exists' do
       before :each do
-        get organization_path(not_found_params)
+        get organization_path(not_found_params), headers: login_user_headers(current_user)
       end
 
       it { expect(response).to have_http_status(404) }
@@ -48,7 +49,7 @@ RSpec.describe 'Organizations', type: :request do
   describe 'POST /organizations' do
     context 'when the request is valid' do
       before :each do
-        post organizations_path, params: { organization: attributes }
+        post organizations_path, params: { organization: attributes }, headers: login_user_headers(current_user)
       end
 
       it { expect(response).to have_http_status(201) }
@@ -62,7 +63,7 @@ RSpec.describe 'Organizations', type: :request do
       let(:attributes) { { name: '' } }
 
       before :each do
-        post organizations_path, params: { organization: attributes }
+        post organizations_path, params: { organization: attributes }, headers: login_user_headers(current_user)
       end
 
       it { expect(response).to have_http_status(422) }
@@ -76,7 +77,7 @@ RSpec.describe 'Organizations', type: :request do
   describe 'PUT /organizations/:id' do
     context 'when record exists' do
       before :each do
-        put organization_path(organization, params: { organization: attributes } )
+        put organization_path(organization, params: { organization: attributes } ), headers: login_user_headers(current_user)
       end
 
       it { expect(response).to have_http_status(200) }
@@ -88,7 +89,7 @@ RSpec.describe 'Organizations', type: :request do
 
     context 'when record does not exists' do
       before :each do
-        get organization_path(not_found_params)
+        get organization_path(not_found_params), headers: login_user_headers(current_user)
       end
 
       it { expect(response).to have_http_status(404) }
@@ -102,7 +103,7 @@ RSpec.describe 'Organizations', type: :request do
       let(:attributes) { { name: '' } }
 
       before :each do
-        put organization_path(organization, params: { organization: attributes } )
+        put organization_path(organization, params: { organization: attributes } ), headers: login_user_headers(current_user)
       end
 
       it { expect(response).to have_http_status(422) }
@@ -116,7 +117,7 @@ RSpec.describe 'Organizations', type: :request do
   describe 'DELETE /organizations/:id' do
     context 'when record exists' do
       before :each do
-        delete organization_path(organization)
+        delete organization_path(organization), headers: login_user_headers(current_user)
       end
 
       it { expect(response).to have_http_status(204) }
@@ -124,7 +125,7 @@ RSpec.describe 'Organizations', type: :request do
 
     context 'when record not exists' do
       before :each do
-        delete organization_path(not_found_params)
+        delete organization_path(not_found_params), headers: login_user_headers(current_user)
       end
 
       it { expect(response).to have_http_status(404) }

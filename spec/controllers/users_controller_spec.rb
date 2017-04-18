@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe AuthenticationController, type: :controller do
+RSpec.describe UsersController, type: :controller do
   let(:now) { Time.local(2017, 4, 18, 15, 0, 0) }
   let(:user) { create(:user) }
   let(:valid_token) { AuthenticateUser.call(attributes).result }
@@ -10,9 +10,9 @@ RSpec.describe AuthenticationController, type: :controller do
     Timecop.freeze(now)
   end
 
-  describe "POST #authenticate" do
+  describe "POST #login" do
     before :each do
-      post :create, params: attributes
+      post :login, params: attributes
     end
 
     context 'with valid email and password' do

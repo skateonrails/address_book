@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ContactsController, type: :controller do
+  let(:current_user) { create(:user) }
   let(:organization) { create(:organization_for_vcr) }
 
   let(:valid_attributes) {
@@ -31,6 +32,12 @@ RSpec.describe ContactsController, type: :controller do
   }
 
   let(:valid_session) { {} }
+
+  before :each do
+    current_user.organizations << organization
+    current_user.save
+    controller_login_user(current_user)
+  end
 
   describe "GET #index" do
     it "returns http success" do

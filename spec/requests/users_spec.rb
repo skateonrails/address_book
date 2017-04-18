@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 
-RSpec.describe 'Contacts', type: :request do
+RSpec.describe 'Users', type: :request do
   let(:now) { Time.local(2017, 4, 18, 15, 0, 0) }
   let(:user) { create(:user) }
   let(:valid_token) { AuthenticateUser.call(attributes).result }
@@ -12,7 +12,7 @@ RSpec.describe 'Contacts', type: :request do
 
   describe 'POST /authentication/authenticate' do
     before :each do
-      post authentication_path, params: attributes
+      post login_users_path, params: attributes
     end
 
     context 'with valid email and password' do

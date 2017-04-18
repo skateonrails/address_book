@@ -1,5 +1,6 @@
-class AuthenticationController < ApplicationController
-  def create
+class UsersController < ApplicationController
+
+  def login
     command = AuthenticateUser.call(command_params)
 
     if command.success?

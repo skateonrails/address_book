@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  post 'authentication' => 'authentication#create'
+  resources :users, only: [:create] do
+    collection do
+      post :login
+    end
+  end
 
   resources :organizations do
     resources :contacts

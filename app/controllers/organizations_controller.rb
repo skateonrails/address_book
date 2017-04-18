@@ -1,4 +1,6 @@
-class OrganizationsController < ApplicationController
+class OrganizationsController < TokenAuthenticatableController
+  before_action :user_is_admin?
+
   # GET /organizations
   def index
     render json: organizations
@@ -42,5 +44,9 @@ class OrganizationsController < ApplicationController
 
   def organization_params
     params.require(:organization).permit(:name)
+  end
+
+  def user_is_admin?
+    render json: { error: 'Not Authorized' }, status: 401 unless @current_user.is_admin?
   end
 end
