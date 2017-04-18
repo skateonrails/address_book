@@ -3,6 +3,7 @@ require 'rails_helper'
 
 RSpec.describe 'Contacts', type: :request do
   let(:organization) { create(:organization_for_vcr) }
+  let(:contact_id) { attributes_for(:contact_with_id)[:id] }
 
   describe "GET /organizations/:organization_id/contacts" do
     before :each do
@@ -22,8 +23,6 @@ RSpec.describe 'Contacts', type: :request do
   end
 
   describe "GET /organizations/:organization_id/contacts/:id" do
-    let(:contact_id) { '-Kh-cQRNupsqgLBbRdJX' }
-
     before :each do
       VCR.use_cassette("Firebase_GetContact/with_valid_organization/should_get_contacts_from_organization", match_requests_on: [:method, :host]) do
         get organization_contact_path(organization, contact_id)
@@ -74,9 +73,7 @@ RSpec.describe 'Contacts', type: :request do
   end
 
   describe 'PUT /organizations/:organization_id/contacts/:id' do
-    let(:contact_id) { attributes_for(:contact_with_id)[:id] }
     context 'when the request is valid' do
-      let(:contact_id) { attributes_for(:contact_with_id)[:id] }
       let(:attributes) { attributes_for(:contact) }
 
       before :each do
@@ -111,4 +108,15 @@ RSpec.describe 'Contacts', type: :request do
     end
   end
 
+  describe 'DELETE /organizations/:organization_id/contacts/:id' do
+    context 'when the request is valid' do
+      before :each do
+        VCR.use_cassette("Firebase_DeleteContact/with_valid_id/should_delete_contact") do
+          delete organization_contact_path(organization, contact_id)
+        end
+      end
+
+      it { expect(response).to have_http_status(204) }
+    end
+  end
 end

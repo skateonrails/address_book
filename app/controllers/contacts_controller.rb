@@ -28,6 +28,12 @@ class ContactsController < ApplicationController
   end
 
   def destroy
+    command = Firebase::DeleteContact.call(organization, contact.id)
+    if command.success?
+      render status: :no_content
+    else
+      render json: { error: command.errors }, status: :unprocessable_entity
+    end
   end
 
   private

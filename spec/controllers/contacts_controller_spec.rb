@@ -11,6 +11,10 @@ RSpec.describe ContactsController, type: :controller do
     { id: attributes_for(:contact_with_id)[:id], contact: attributes_for(:contact), organization_id: organization.id }
   }
 
+  let(:valid_destroy_attributes) {
+    { id: attributes_for(:contact_with_id)[:id], organization_id: organization.id }
+  }
+
   let(:invalid_attributes) {
     {
       organization_id: organization.id,
@@ -92,11 +96,15 @@ RSpec.describe ContactsController, type: :controller do
     end
   end
 
-  describe "GET #destroy" do
-    it "returns http success" do
-      delete :destroy, params: {organization_id: organization.id, id: 1}
-      expect(response).to have_http_status(:success)
+  describe "DELETE #destroy" do
+    context 'with valid id' do
+      it 'deletes the requested contact' do
+        VCR.use_cassette("Firebase_DeleteContact/with_valid_id/should_delete_contact") do
+          delete :destroy, params: valid_destroy_attributes, session: valid_session
+          expect(response).to have_http_status(:no_content)
+          expect(Firebase::GetContact.call(organization, valid_destroy_attributes[:id]).result).to be nil
+        end
+      end
     end
   end
-
 end
