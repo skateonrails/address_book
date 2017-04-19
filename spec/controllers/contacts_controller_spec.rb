@@ -87,7 +87,9 @@ RSpec.describe ContactsController, type: :controller do
           put :update, params: valid_update_attributes, session: valid_session
           expect(response).to have_http_status(:ok)
           expect(response.content_type).to eq('application/json')
-          expect(response.body).to match(valid_update_attributes[:contact].to_json)
+
+          valid_update = {id: valid_update_attributes[:id]}.merge(valid_update_attributes[:contact])
+          expect(response.body).to match(valid_update.to_json)
         end
       end
     end

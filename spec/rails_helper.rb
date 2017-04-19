@@ -90,4 +90,6 @@ RSpec.configure do |config|
 
   config.include RequestSpecHelper, type: :request
   config.include RequestSpecHelper, type: :controller
+
+  # config.filter_run show_in_doc: true if ENV['APIPIE_RECORD']
 end

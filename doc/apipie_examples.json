@@ -1,0 +1,1531 @@
+{
+  "contacts#create": [
+    {
+      "verb": "POST",
+      "path": "",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": {
+        "contact": {
+          "building_number": "56353",
+          "city": "Alffort",
+          "country": "United States of America",
+          "name": "Rolph Spicer",
+          "secondary_address": "Suite 119",
+          "state": "Minnesota",
+          "street_address": "872 Franecki Lights",
+          "zip_code": "29982"
+        }
+      },
+      "response_data": {
+        "id": "-KhEQk5ZrCXPgs0fctiQ",
+        "name": "Rolph Spicer",
+        "city": "Alffort",
+        "state": "Minnesota",
+        "country": "United States of America",
+        "street_address": "872 Franecki Lights",
+        "secondary_address": "Suite 119",
+        "building_number": "56353",
+        "zip_code": "29982"
+      },
+      "code": "201",
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": {
+        "contact": {
+          "building_number": "",
+          "city": "",
+          "country": "",
+          "name": "",
+          "state": "",
+          "street_address": "",
+          "zip_code": ""
+        }
+      },
+      "response_data": {
+        "error": {
+          "name": [
+            "can't be blank"
+          ],
+          "zip_code": [
+            "can't be blank"
+          ],
+          "street_address": [
+            "can't be blank"
+          ],
+          "building_number": [
+            "can't be blank"
+          ],
+          "city": [
+            "can't be blank"
+          ],
+          "state": [
+            "can't be blank"
+          ],
+          "country": [
+            "can't be blank"
+          ]
+        }
+      },
+      "code": "422",
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/organizations/1/contacts",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "contact[name]=Gareth+Clifton&contact[city]=North+Havenfort&contact[state]=South+Dakota&contact[country]=Canada&contact[street_address]=58815+Raina+Turnpike&contact[secondary_address]=Apt.+353&contact[building_number]=475&contact[zip_code]=87661-4931",
+      "response_data": {
+        "id": "-KhEQk5ZrCXPgs0fctiQ",
+        "name": "Gareth Clifton",
+        "city": "North Havenfort",
+        "state": "South Dakota",
+        "country": "Canada",
+        "street_address": "58815 Raina Turnpike",
+        "secondary_address": "Apt. 353",
+        "building_number": "475",
+        "zip_code": "87661-4931"
+      },
+      "code": 201,
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/organizations/1/contacts",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "contact[name]=Garth+of+Oldtown&contact[city]=Sauerchester&contact[state]=California&contact[country]=Solomon+Islands&contact[street_address]=928+Leatha+Terrace&contact[secondary_address]=Suite+992&contact[building_number]=715&contact[zip_code]=25940-6748",
+      "response_data": {
+        "id": "-KhEQk5ZrCXPgs0fctiQ",
+        "name": "Garth of Oldtown",
+        "city": "Sauerchester",
+        "state": "California",
+        "country": "Solomon Islands",
+        "street_address": "928 Leatha Terrace",
+        "secondary_address": "Suite 992",
+        "building_number": "715",
+        "zip_code": "25940-6748"
+      },
+      "code": 201,
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/organizations/1/contacts",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "contact[name]=&contact[city]=&contact[state]=&contact[country]=&contact[street_address]=&contact[building_number]=&contact[zip_code]=",
+      "response_data": {
+        "error": {
+          "name": [
+            "can't be blank"
+          ],
+          "zip_code": [
+            "can't be blank"
+          ],
+          "street_address": [
+            "can't be blank"
+          ],
+          "building_number": [
+            "can't be blank"
+          ],
+          "city": [
+            "can't be blank"
+          ],
+          "state": [
+            "can't be blank"
+          ],
+          "country": [
+            "can't be blank"
+          ]
+        }
+      },
+      "code": 422,
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/organizations/1/contacts",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "contact[name]=&contact[city]=&contact[state]=&contact[country]=&contact[street_address]=&contact[building_number]=&contact[zip_code]=",
+      "response_data": {
+        "error": {
+          "name": [
+            "can't be blank"
+          ],
+          "zip_code": [
+            "can't be blank"
+          ],
+          "street_address": [
+            "can't be blank"
+          ],
+          "building_number": [
+            "can't be blank"
+          ],
+          "city": [
+            "can't be blank"
+          ],
+          "state": [
+            "can't be blank"
+          ],
+          "country": [
+            "can't be blank"
+          ]
+        }
+      },
+      "code": 422,
+      "show_in_doc": 0,
+      "recorded": true
+    }
+  ],
+  "contacts#destroy": [
+    {
+      "verb": "DELETE",
+      "path": "",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": {
+      },
+      "response_data": null,
+      "code": "204",
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "DELETE",
+      "path": "/organizations/1/contacts/-Kh-cQRNupsqgLBbRdJX",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": null,
+      "code": 204,
+      "show_in_doc": 0,
+      "recorded": true
+    }
+  ],
+  "contacts#index": [
+    {
+      "verb": "GET",
+      "path": "",
+      "versions": [
+        "1.0"
+      ],
+      "query": "",
+      "request_data": null,
+      "response_data": [
+        {
+          "id": "-Kh-cQRNupsqgLBbRdJX",
+          "name": "Contact Name",
+          "city": "City",
+          "state": "State",
+          "country": "Country",
+          "street_address": "Street Address",
+          "secondary_address": null,
+          "building_number": 2234,
+          "zip_code": 55273
+        }
+      ],
+      "code": "200",
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "GET",
+      "path": "/organizations/1/contacts",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": [
+        {
+          "id": "-Kh-cQRNupsqgLBbRdJX",
+          "name": "Contact Name",
+          "city": "City",
+          "state": "State",
+          "country": "Country",
+          "street_address": "Street Address",
+          "secondary_address": null,
+          "building_number": 2234,
+          "zip_code": 55273
+        }
+      ],
+      "code": 200,
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "GET",
+      "path": "/organizations/1/contacts",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": [
+        {
+          "id": "-Kh-cQRNupsqgLBbRdJX",
+          "name": "Contact Name",
+          "city": "City",
+          "state": "State",
+          "country": "Country",
+          "street_address": "Street Address",
+          "secondary_address": null,
+          "building_number": 2234,
+          "zip_code": 55273
+        }
+      ],
+      "code": 200,
+      "show_in_doc": 0,
+      "recorded": true
+    }
+  ],
+  "contacts#show": [
+    {
+      "verb": "GET",
+      "path": "",
+      "versions": [
+        "1.0"
+      ],
+      "query": "",
+      "request_data": null,
+      "response_data": {
+        "id": "-Kh-cQRNupsqgLBbRdJX",
+        "name": "Contact Name",
+        "city": "City",
+        "state": "State",
+        "country": "Country",
+        "street_address": "Street Address",
+        "secondary_address": null,
+        "building_number": 2234,
+        "zip_code": 55273
+      },
+      "code": "200",
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "GET",
+      "path": "/organizations/1/contacts/-Kh-cQRNupsqgLBbRdJX",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "id": "-Kh-cQRNupsqgLBbRdJX",
+        "name": "Contact Name",
+        "city": "City",
+        "state": "State",
+        "country": "Country",
+        "street_address": "Street Address",
+        "secondary_address": null,
+        "building_number": 2234,
+        "zip_code": 55273
+      },
+      "code": 200,
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "GET",
+      "path": "/organizations/1/contacts/-Kh-cQRNupsqgLBbRdJX",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "id": "-Kh-cQRNupsqgLBbRdJX",
+        "name": "Contact Name",
+        "city": "City",
+        "state": "State",
+        "country": "Country",
+        "street_address": "Street Address",
+        "secondary_address": null,
+        "building_number": 2234,
+        "zip_code": 55273
+      },
+      "code": 200,
+      "show_in_doc": 0,
+      "recorded": true
+    }
+  ],
+  "contacts#update": [
+    {
+      "verb": "PUT",
+      "path": "",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": {
+        "contact": {
+          "building_number": "95711",
+          "city": "Birdiehaven",
+          "country": "Finland",
+          "name": "Rolder",
+          "secondary_address": "Suite 381",
+          "state": "New Hampshire",
+          "street_address": "485 Stephany Haven",
+          "zip_code": "31671-8103"
+        }
+      },
+      "response_data": {
+        "id": "-Kh-cQRNupsqgLBbRdJX",
+        "name": "Rolder",
+        "city": "Birdiehaven",
+        "state": "New Hampshire",
+        "country": "Finland",
+        "street_address": "485 Stephany Haven",
+        "secondary_address": "Suite 381",
+        "building_number": "95711",
+        "zip_code": "31671-8103"
+      },
+      "code": "200",
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "PUT",
+      "path": "",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": {
+        "contact": {
+          "building_number": "",
+          "city": "",
+          "country": "",
+          "name": "",
+          "state": "",
+          "street_address": "",
+          "zip_code": ""
+        }
+      },
+      "response_data": {
+        "error": {
+          "name": [
+            "can't be blank"
+          ],
+          "zip_code": [
+            "can't be blank"
+          ],
+          "street_address": [
+            "can't be blank"
+          ],
+          "building_number": [
+            "can't be blank"
+          ],
+          "city": [
+            "can't be blank"
+          ],
+          "state": [
+            "can't be blank"
+          ],
+          "country": [
+            "can't be blank"
+          ]
+        }
+      },
+      "code": "422",
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "PUT",
+      "path": "/organizations/1/contacts/-Kh-cQRNupsqgLBbRdJX",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "contact[name]=Tygett+Lannister&contact[city]=New+Arneton&contact[state]=Delaware&contact[country]=Djibouti&contact[street_address]=901+Effertz+Shores&contact[secondary_address]=Suite+697&contact[building_number]=4482&contact[zip_code]=62891",
+      "response_data": {
+        "id": "-Kh-cQRNupsqgLBbRdJX",
+        "name": "Tygett Lannister",
+        "city": "New Arneton",
+        "state": "Delaware",
+        "country": "Djibouti",
+        "street_address": "901 Effertz Shores",
+        "secondary_address": "Suite 697",
+        "building_number": "4482",
+        "zip_code": "62891"
+      },
+      "code": 200,
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "PUT",
+      "path": "/organizations/1/contacts/-Kh-cQRNupsqgLBbRdJX",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "contact[name]=Raymun+Fossoway&contact[city]=New+Marlen&contact[state]=Kentucky&contact[country]=Dominica&contact[street_address]=465+Weston+Meadow&contact[secondary_address]=Suite+810&contact[building_number]=536&contact[zip_code]=80402-2025",
+      "response_data": {
+        "id": "-Kh-cQRNupsqgLBbRdJX",
+        "name": "Raymun Fossoway",
+        "city": "New Marlen",
+        "state": "Kentucky",
+        "country": "Dominica",
+        "street_address": "465 Weston Meadow",
+        "secondary_address": "Suite 810",
+        "building_number": "536",
+        "zip_code": "80402-2025"
+      },
+      "code": 200,
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "PUT",
+      "path": "/organizations/1/contacts/-Kh-cQRNupsqgLBbRdJX",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "contact[name]=&contact[city]=&contact[state]=&contact[country]=&contact[street_address]=&contact[building_number]=&contact[zip_code]=",
+      "response_data": {
+        "error": {
+          "name": [
+            "can't be blank"
+          ],
+          "zip_code": [
+            "can't be blank"
+          ],
+          "street_address": [
+            "can't be blank"
+          ],
+          "building_number": [
+            "can't be blank"
+          ],
+          "city": [
+            "can't be blank"
+          ],
+          "state": [
+            "can't be blank"
+          ],
+          "country": [
+            "can't be blank"
+          ]
+        }
+      },
+      "code": 422,
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "PUT",
+      "path": "/organizations/1/contacts/-Kh-cQRNupsqgLBbRdJX",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "contact[name]=&contact[city]=&contact[state]=&contact[country]=&contact[street_address]=&contact[building_number]=&contact[zip_code]=",
+      "response_data": {
+        "error": {
+          "name": [
+            "can't be blank"
+          ],
+          "zip_code": [
+            "can't be blank"
+          ],
+          "street_address": [
+            "can't be blank"
+          ],
+          "building_number": [
+            "can't be blank"
+          ],
+          "city": [
+            "can't be blank"
+          ],
+          "state": [
+            "can't be blank"
+          ],
+          "country": [
+            "can't be blank"
+          ]
+        }
+      },
+      "code": 422,
+      "show_in_doc": 0,
+      "recorded": true
+    }
+  ],
+  "organizations#create": [
+    {
+      "verb": "POST",
+      "path": "",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": {
+        "organization": {
+          "name": "McCullough-Raynor"
+        }
+      },
+      "response_data": {
+        "id": 3,
+        "name": "McCullough-Raynor"
+      },
+      "code": "201",
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": {
+        "organization": {
+          "name": "Von, Stracke and Rosenbaum"
+        }
+      },
+      "response_data": {
+        "id": 4,
+        "name": "Von, Stracke and Rosenbaum"
+      },
+      "code": "201",
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": {
+        "organization": {
+          "name": ""
+        }
+      },
+      "response_data": {
+        "error": {
+          "message": "Validation failed: Name can't be blank"
+        }
+      },
+      "code": "422",
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/organizations",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "organization[name]=Leuschke-Paucek",
+      "response_data": {
+        "id": 17,
+        "name": "Leuschke-Paucek"
+      },
+      "code": 201,
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/organizations",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "organization[name]=Parker%2C+Larkin+and+O%27Reilly",
+      "response_data": {
+        "id": 18,
+        "name": "Parker, Larkin and O'Reilly"
+      },
+      "code": 201,
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/organizations",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "organization[name]=",
+      "response_data": {
+        "error": {
+          "message": "Validation failed: Name can't be blank"
+        }
+      },
+      "code": 422,
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/organizations",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "organization[name]=",
+      "response_data": {
+        "error": {
+          "message": "Validation failed: Name can't be blank"
+        }
+      },
+      "code": 422,
+      "show_in_doc": 0,
+      "recorded": true
+    }
+  ],
+  "organizations#destroy": [
+    {
+      "verb": "DELETE",
+      "path": "",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": {
+      },
+      "response_data": null,
+      "code": "204",
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "DELETE",
+      "path": "/organizations/23",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": null,
+      "code": 204,
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "DELETE",
+      "path": "/organizations/100",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "error": {
+          "message": "Couldn't find Organization with 'id'=100"
+        }
+      },
+      "code": 404,
+      "show_in_doc": 0,
+      "recorded": true
+    }
+  ],
+  "organizations#index": [
+    {
+      "verb": "GET",
+      "path": "",
+      "versions": [
+        "1.0"
+      ],
+      "query": "",
+      "request_data": null,
+      "response_data": [
+        {
+          "id": 1,
+          "name": "Jerde-Cummerata"
+        }
+      ],
+      "code": "200",
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "GET",
+      "path": "/organizations",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": [
+        {
+          "id": 13,
+          "name": "Maggio and Sons"
+        }
+      ],
+      "code": 200,
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "GET",
+      "path": "/organizations",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": [
+        {
+          "id": 14,
+          "name": "Hegmann and Sons"
+        }
+      ],
+      "code": 200,
+      "show_in_doc": 0,
+      "recorded": true
+    }
+  ],
+  "organizations#show": [
+    {
+      "verb": "GET",
+      "path": "",
+      "versions": [
+        "1.0"
+      ],
+      "query": "",
+      "request_data": null,
+      "response_data": {
+        "id": 2,
+        "name": "Harris Group"
+      },
+      "code": "200",
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "GET",
+      "path": "/organizations/15",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "id": 15,
+        "name": "Waelchi, Sauer and Heathcote"
+      },
+      "code": 200,
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "GET",
+      "path": "/organizations/16",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "id": 16,
+        "name": "Kihn-Wehner"
+      },
+      "code": 200,
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "GET",
+      "path": "/organizations/100",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "error": {
+          "message": "Couldn't find Organization with 'id'=100"
+        }
+      },
+      "code": 404,
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "GET",
+      "path": "/organizations/100",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "error": {
+          "message": "Couldn't find Organization with 'id'=100"
+        }
+      },
+      "code": 404,
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "GET",
+      "path": "/organizations/100",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "error": {
+          "message": "Couldn't find Organization with 'id'=100"
+        }
+      },
+      "code": 404,
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "GET",
+      "path": "/organizations/100",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": null,
+      "response_data": {
+        "error": {
+          "message": "Couldn't find Organization with 'id'=100"
+        }
+      },
+      "code": 404,
+      "show_in_doc": 0,
+      "recorded": true
+    }
+  ],
+  "organizations#update": [
+    {
+      "verb": "PUT",
+      "path": "",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": {
+        "organization": {
+          "name": "Lueilwitz-Weissnat"
+        }
+      },
+      "response_data": {
+        "id": 5,
+        "name": "Lueilwitz-Weissnat"
+      },
+      "code": "200",
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "PUT",
+      "path": "",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": {
+        "organization": {
+          "name": "Shields-Osinski"
+        }
+      },
+      "response_data": {
+        "id": 6,
+        "name": "Shields-Osinski"
+      },
+      "code": "200",
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "PUT",
+      "path": "",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": {
+        "organization": {
+          "name": ""
+        }
+      },
+      "response_data": {
+        "error": {
+          "message": "Validation failed: Name can't be blank"
+        }
+      },
+      "code": "422",
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "PUT",
+      "path": "/organizations/19",
+      "versions": [
+        "1.0"
+      ],
+      "query": "organization%5Bname%5D=Collier-Okuneva",
+      "request_data": null,
+      "response_data": {
+        "id": 19,
+        "name": "Collier-Okuneva"
+      },
+      "code": 200,
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "PUT",
+      "path": "/organizations/20",
+      "versions": [
+        "1.0"
+      ],
+      "query": "organization%5Bname%5D=Heidenreich+Inc",
+      "request_data": null,
+      "response_data": {
+        "id": 20,
+        "name": "Heidenreich Inc"
+      },
+      "code": 200,
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "PUT",
+      "path": "/organizations/21",
+      "versions": [
+        "1.0"
+      ],
+      "query": "organization%5Bname%5D=",
+      "request_data": null,
+      "response_data": {
+        "error": {
+          "message": "Validation failed: Name can't be blank"
+        }
+      },
+      "code": 422,
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "PUT",
+      "path": "/organizations/22",
+      "versions": [
+        "1.0"
+      ],
+      "query": "organization%5Bname%5D=",
+      "request_data": null,
+      "response_data": {
+        "error": {
+          "message": "Validation failed: Name can't be blank"
+        }
+      },
+      "code": 422,
+      "show_in_doc": 0,
+      "recorded": true
+    }
+  ],
+  "users#create": [
+    {
+      "verb": "POST",
+      "path": "",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": {
+        "user": {
+          "email": "easter_mante@mrazbrakus.biz",
+          "password": "new_user_passW0rd"
+        }
+      },
+      "response_data": {
+        "id": 26,
+        "email": "easter_mante@mrazbrakus.biz"
+      },
+      "code": "201",
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": {
+        "user": {
+          "email": "kaylah.trantow@stammmoore.com",
+          "password": "new_user_passW0rd"
+        }
+      },
+      "response_data": {
+        "id": 27,
+        "email": "kaylah.trantow@stammmoore.com"
+      },
+      "code": "201",
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": {
+        "user": {
+          "email": "randy@romaguera.name",
+          "organization_ids": [
+            "9"
+          ],
+          "password": "new_user_passW0rd"
+        }
+      },
+      "response_data": {
+        "id": 28,
+        "email": "randy@romaguera.name"
+      },
+      "code": "201",
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": {
+        "user": {
+          "email": "delia@hamillmosciski.org",
+          "organization_ids": [
+            "10"
+          ],
+          "password": "new_user_passW0rd"
+        }
+      },
+      "response_data": {
+        "id": 29,
+        "email": "delia@hamillmosciski.org"
+      },
+      "code": "201",
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": {
+        "user": {
+          "email": "dortha_marvin@torphy.biz",
+          "organization_ids": [
+            "11"
+          ],
+          "password": "new_user_passW0rd"
+        }
+      },
+      "response_data": {
+        "id": 30,
+        "email": "dortha_marvin@torphy.biz"
+      },
+      "code": "201",
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": {
+        "user": {
+          "email": "ivalid_email",
+          "password": "new_user_passW0rd"
+        }
+      },
+      "response_data": {
+        "error": {
+          "message": "Validation failed: Email is invalid"
+        }
+      },
+      "code": "422",
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/users",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "user[email]=napoleon_nolan%40wilderman.info&user[password]=new_user_passW0rd&user[organization_ids][]=24",
+      "response_data": {
+        "id": 67,
+        "email": "napoleon_nolan@wilderman.info"
+      },
+      "code": 201,
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/users",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "user[email]=marjorie%40becker.com&user[password]=new_user_passW0rd&user[organization_ids][]=25",
+      "response_data": {
+        "id": 68,
+        "email": "marjorie@becker.com"
+      },
+      "code": 201,
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/users",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "user[email]=shirley_wolff%40steuber.name&user[password]=new_user_passW0rd",
+      "response_data": {
+        "id": 69,
+        "email": "shirley_wolff@steuber.name"
+      },
+      "code": 201,
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/users",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "user[email]=carlie.little%40upton.net&user[password]=new_user_passW0rd",
+      "response_data": {
+        "id": 70,
+        "email": "carlie.little@upton.net"
+      },
+      "code": 201,
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/users",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "user[email]=ivalid_email&user[password]=new_user_passW0rd",
+      "response_data": {
+        "error": {
+          "message": "Validation failed: Email is invalid"
+        }
+      },
+      "code": 422,
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/users",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "user[email]=ivalid_email&user[password]=new_user_passW0rd",
+      "response_data": {
+        "error": {
+          "message": "Validation failed: Email is invalid"
+        }
+      },
+      "code": 422,
+      "show_in_doc": 0,
+      "recorded": true
+    }
+  ],
+  "users#login": [
+    {
+      "verb": "POST",
+      "path": "",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": {
+        "email": "lilly_cremin@leannon.co",
+        "password": "PaSSw0rD!!1!!"
+      },
+      "response_data": {
+        "auth_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyMiwiZXhwIjoxNDkyNjI0ODAwfQ.v1kpu1NCNYyMb8q6VdouVft_fW84mCj4glYujtjXVro"
+      },
+      "code": "200",
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": {
+        "email": "jean_stokes@gorczany.io",
+        "password": "PaSSw0rD!!1!!"
+      },
+      "response_data": {
+        "auth_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyMywiZXhwIjoxNDkyNjI0ODAwfQ.8Z8LBYs8QRoULpxEXIDu8cCx6Jx7gkW1z1hfE_8x7uo"
+      },
+      "code": "200",
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": {
+        "email": "gabriella@danielwill.io",
+        "password": "invalid_password"
+      },
+      "response_data": {
+        "error": {
+          "user_authentication": [
+            "invalid credentials"
+          ]
+        }
+      },
+      "code": "401",
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": {
+        "email": "vincent@hoegeraufderhar.name",
+        "password": "invalid_password"
+      },
+      "response_data": {
+        "error": {
+          "user_authentication": [
+            "invalid credentials"
+          ]
+        }
+      },
+      "code": "401",
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": {
+        "email": "austin@lemke.io",
+        "password": "invalid_password"
+      },
+      "response_data": {
+        "error": {
+          "user_authentication": [
+            "invalid credentials"
+          ]
+        }
+      },
+      "code": "401",
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": {
+        "email": "humberto.huels@effertz.info",
+        "password": "invalid_password"
+      },
+      "response_data": {
+        "error": {
+          "user_authentication": [
+            "invalid credentials"
+          ]
+        }
+      },
+      "code": "401",
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/users/login",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "email=carmella.simonis%40dubuque.org&password=PaSSw0rD%21%211%21%21",
+      "response_data": {
+        "auth_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2MywiZXhwIjoxNDkyNjI0ODAwfQ.BJw0DYR9dBL7aE633JWK2PhWo3r3IqYkdrhO0peLfhU"
+      },
+      "code": 200,
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/users/login",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "email=jackie%40armstrong.net&password=PaSSw0rD%21%211%21%21",
+      "response_data": {
+        "auth_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2NCwiZXhwIjoxNDkyNjI0ODAwfQ.ZEV22aJCaYgr4cgznOCcaenlIwJ3si1Hoe2gpsGtgYY"
+      },
+      "code": 200,
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/users/login",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "email=jaden.reichert%40stiedemannmoriette.biz&password=invalid_password",
+      "response_data": {
+        "error": {
+          "user_authentication": [
+            "invalid credentials"
+          ]
+        }
+      },
+      "code": 401,
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/users/login",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "email=kaycee%40miller.info&password=invalid_password",
+      "response_data": {
+        "error": {
+          "user_authentication": [
+            "invalid credentials"
+          ]
+        }
+      },
+      "code": 401,
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/users/login",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "email=anjali%40blick.io&password=invalid_password",
+      "response_data": {
+        "error": {
+          "user_authentication": [
+            "invalid credentials"
+          ]
+        }
+      },
+      "code": 401,
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/users/login",
+      "versions": [
+        "1.0"
+      ],
+      "query": null,
+      "request_data": "email=ricardo.mcclure%40waters.co&password=invalid_password",
+      "response_data": {
+        "error": {
+          "user_authentication": [
+            "invalid credentials"
+          ]
+        }
+      },
+      "code": 401,
+      "show_in_doc": 0,
+      "recorded": true
+    }
+  ]
+}

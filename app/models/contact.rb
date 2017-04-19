@@ -27,6 +27,7 @@ class Contact
 
   def attributes
     {
+      id: nil,
       name: nil,
       city: nil,
       state: nil,

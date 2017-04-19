@@ -1,4 +1,6 @@
 class OrganizationsController < TokenAuthenticatableController
+  include Apipie::OrganizationsDocumentation
+
   before_action :user_is_admin?
 
   # GET /organizations

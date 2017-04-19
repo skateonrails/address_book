@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  include Apipie::UsersDocumentation
 
   def login
     command = AuthenticateUser.call(email: login_params[:email],

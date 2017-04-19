@@ -43,6 +43,7 @@ PreCommit:
     exclude:
       - 'spec/**/*.rb'
       - 'db/migrate/*'
+      - 'app/controllers/concerns/apipie'
 
   LocalPathsInGemfile:
     enabled: true

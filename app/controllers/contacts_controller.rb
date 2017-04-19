@@ -1,4 +1,6 @@
 class ContactsController < TokenAuthenticatableController
+  include Apipie::ContactsDocumentation
+
   def index
     render json: contacts
   end

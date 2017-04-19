@@ -47,15 +47,6 @@ RSpec.describe 'Users', type: :request do
       post users_path, params: attributes
     end
 
-    context 'with valid email and password' do
-      let(:attributes) {
-        { user: { email: Faker::Internet.email, password: 'new_user_passW0rd' } }
-      }
-
-      it { expect(response).to have_http_status(:created) }
-      it { expect(struct_response.email).to eq( attributes[:user][:email] ) }
-    end
-
     context 'with valid email and password and organization association' do
       let(:organization) { create(:organization) }
       let(:attributes) {
@@ -68,6 +59,15 @@ RSpec.describe 'Users', type: :request do
         created_user = User.find struct_response.id
         expect(created_user.organization_ids).to eq(attributes[:user][:organization_ids])
       end
+    end
+
+    context 'with valid email and password' do
+      let(:attributes) {
+        { user: { email: Faker::Internet.email, password: 'new_user_passW0rd' } }
+      }
+
+      it { expect(response).to have_http_status(:created) }
+      it { expect(struct_response.email).to eq( attributes[:user][:email] ) }
     end
 
     context 'with invalid email' do
