@@ -10,7 +10,7 @@ RSpec.describe 'Users', type: :request do
     Timecop.freeze(now)
   end
 
-  describe 'POST /authentication/authenticate' do
+  describe 'POST /users/login' do
     before :each do
       post login_users_path, params: attributes
     end
@@ -39,6 +39,44 @@ RSpec.describe 'Users', type: :request do
 
       it { expect(response).to have_http_status(:unauthorized) }
       it { expect(response.body).to match(/invalid credentials/) }
+    end
+  end
+
+  describe 'POST /users' do
+    before :each do
+      post users_path, params: attributes
+    end
+
+    context 'with valid email and password' do
+      let(:attributes) {
+        { user: { email: Faker::Internet.email, password: 'new_user_passW0rd' } }
+      }
+
+      it { expect(response).to have_http_status(:created) }
+      it { expect(struct_response.email).to eq( attributes[:user][:email] ) }
+    end
+
+    context 'with valid email and password and organization association' do
+      let(:organization) { create(:organization) }
+      let(:attributes) {
+        { user: { email: Faker::Internet.email, password: 'new_user_passW0rd', organization_ids: [organization.id] } }
+      }
+
+      it { expect(response).to have_http_status(:created) }
+
+      it 'should associate user with organizations' do
+        created_user = User.find struct_response.id
+        expect(created_user.organization_ids).to eq(attributes[:user][:organization_ids])
+      end
+    end
+
+    context 'with invalid email' do
+      let(:attributes) {
+        { user: { email: 'ivalid_email', password: 'new_user_passW0rd' } }
+      }
+
+      it { expect(response).to have_http_status(:unprocessable_entity) }
+      it { expect(response.body).to match(/Email is invalid/) }
     end
   end
 end

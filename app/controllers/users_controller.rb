@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
   def login
-    command = AuthenticateUser.call(command_params)
+    command = AuthenticateUser.call(email: login_params[:email],
+                                    password: login_params[:password])
 
     if command.success?
       render json: { auth_token: command.result }
@@ -10,16 +11,22 @@ class UsersController < ApplicationController
     end
   end
 
+  def create
+    new_user.save!
+    render json: new_user, status: :created
+  end
+
   private
 
-  def authentication_params
+  def login_params
     params.permit(:email, :password)
   end
 
-  def command_params
-    {
-      email: authentication_params[:email],
-      password: authentication_params[:password]
-    }
+  def create_params
+    params.require(:user).permit(:email, :password, organization_ids: [])
+  end
+
+  def new_user
+    @user ||= User.new(create_params)
   end
 end

@@ -45,4 +45,48 @@ RSpec.describe UsersController, type: :controller do
       it { expect(response.body).to match(/invalid credentials/) }
     end
   end
+
+  describe "POST #create" do
+    before :each do
+      post :create, params: attributes
+    end
+
+    context 'with valid email and password' do
+      let(:attributes) {
+        { user: { email: Faker::Internet.email, password: 'new_user_passW0rd' } }
+      }
+
+      it { expect(response).to have_http_status(:created) }
+
+      it 'should return user' do
+        expect(struct_response.email).to eq( attributes[:user][:email] )
+      end
+    end
+
+    context 'with valid email and password and organization association' do
+      let(:organization) { create(:organization) }
+      let(:attributes) {
+        { user: { email: Faker::Internet.email, password: 'new_user_passW0rd', organization_ids: [organization.id] } }
+      }
+
+      it { expect(response).to have_http_status(:created) }
+
+      it 'should return user' do
+        expect(struct_response.email).to eq( attributes[:user][:email] )
+      end
+
+      it 'should associate user with organizations' do
+        created_user = User.find struct_response.id
+        expect(created_user.organization_ids).to eq(attributes[:user][:organization_ids])
+      end
+    end
+
+    context 'with invalid email' do
+      let(:attributes) {
+        { user: { email: 'ivalid_email', password: 'new_user_passW0rd' } }
+      }
+
+      it { expect(response).to have_http_status(:unprocessable_entity) }
+    end
+  end
 end
