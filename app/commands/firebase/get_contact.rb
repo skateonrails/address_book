@@ -1,6 +1,6 @@
 module Firebase
   class GetContact
-    prepend SimpleCommand
+    include Firebase::Modules::ContactCommand
 
     def initialize(organization, contact_id)
       @organization = organization
@@ -8,7 +8,7 @@ module Firebase
     end
 
     def call
-      return errors.add "Response raw body: #{response_raw_body}" unless response.success?
+      return unsuccessful_response unless response.success?
       return nil if response_body.blank?
 
       attributes = {id: contact_id}.merge response_body
@@ -17,30 +17,14 @@ module Firebase
 
     private
 
-    attr_accessor :organization, :contact_id
+    attr_accessor :contact_id
 
-    def firebase_client
-      @firebase_client ||= Firebase::Client.new(ENV['FIREBASE_URI'], ENV['FIREBASE_SECRET'])
+    def response_action
+      firebase_client.get(path)
     end
 
-    def response
-      @response ||= firebase_client.get(path)
-    end
-
-    def response_body
-      response.body
-    end
-
-    def response_raw_body
-      response.raw_body
-    end
-
-    def path
-      "#{organization_root_path}/#{organization.id}/contacts/#{contact_id}"
-    end
-
-    def organization_root_path
-      organization.class.name.downcase.underscore
+    def contacts_path
+      "/contacts/#{contact_id}"
     end
   end
 end

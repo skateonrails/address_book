@@ -1,6 +1,6 @@
 module Firebase
   class UpdateContact
-    prepend SimpleCommand
+    include Firebase::Modules::ContactCommand
 
     def initialize(organization, contact_id, params)
       @organization = organization
@@ -11,30 +11,18 @@ module Firebase
     def call
       set_errors_from_object unless contact.valid?
       return nil if errors.present? || response_body.blank?
-      errors.add "Response raw body: #{response_raw_body}" unless response.success?
+      return unsuccessful_response unless response.success?
 
       contact.id = contact_id
-      return contact
+      contact
     end
 
     private
 
-    attr_accessor :organization, :contact_id, :params
+    attr_accessor :contact_id, :params
 
-    def firebase_client
-      @firebase_client ||= Firebase::Client.new(ENV['FIREBASE_URI'], ENV['FIREBASE_SECRET'])
-    end
-
-    def response
-      @response ||= firebase_client.update(path, params)
-    end
-
-    def response_body
-      response.body
-    end
-
-    def response_raw_body
-      response.raw_body
+    def response_action
+      firebase_client.update(path, params)
     end
 
     def contact
@@ -47,12 +35,8 @@ module Firebase
       end
     end
 
-    def path
-      "#{organization_root_path}/#{organization.id}/contacts/#{contact_id}"
-    end
-
-    def organization_root_path
-      organization.class.name.downcase.underscore
+    def contacts_path
+      "/contacts/#{contact_id}"
     end
   end
 end

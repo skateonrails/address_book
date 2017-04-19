@@ -1,6 +1,6 @@
 module Firebase
   class DeleteContact
-    prepend SimpleCommand
+    include Firebase::Modules::ContactCommand
 
     def initialize(organization, contact_id)
       @organization = organization
@@ -9,27 +9,19 @@ module Firebase
 
     def call
       return false unless response.success?
-      return true
+      true
     end
 
     private
 
-    attr_accessor :organization, :contact_id
+    attr_accessor :contact_id
 
-    def firebase_client
-      @firebase_client ||= Firebase::Client.new(ENV['FIREBASE_URI'], ENV['FIREBASE_SECRET'])
+    def response_action
+      firebase_client.delete(path)
     end
 
-    def response
-      @response ||= firebase_client.delete(path)
-    end
-
-    def path
-      "#{organization_root_path}/#{organization.id}/contacts/#{contact_id}"
-    end
-
-    def organization_root_path
-      organization.class.name.downcase.underscore
+    def contacts_path
+      "/contacts/#{contact_id}"
     end
   end
 end
