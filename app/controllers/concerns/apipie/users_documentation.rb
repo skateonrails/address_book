@@ -7,7 +7,7 @@ module Apipie::UsersDocumentation
       formats ['json']
     end
 
-    api :GET, 'users/login', 'Log in user'
+    api :POST, 'users/login', 'Log in user'
     param :email, String, desc: 'user email', required: true
     param :password, String, desc: 'user password', required: true
     error 401, 'User email/password not found'
